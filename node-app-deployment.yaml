@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: #path to your docker image
+        image: baguspermadi/node-app:v1
         ports:
         - containerPort: 3000
