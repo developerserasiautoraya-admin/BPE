@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: baguspermadi/node-app:v1
+        image: baguspermadi/node-app:v2
         ports:
         - containerPort: 3000
