@@ -87,3 +87,12 @@ spec:
                 name: node-app-service
                 port:
                   number: 3000
+
+kubectl create -f ingress-myservice.yaml
+
+- add Host and ip to /etc/hosts
+
+172.17.144.227 bagus.info
+
+test Curl or open Web with Hostname
+
