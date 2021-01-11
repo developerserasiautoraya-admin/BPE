@@ -60,5 +60,30 @@ spec:
 -kubectl create -f node-app-service.yaml
 
 -Test Open in Browser
+http://172.17.144.227:30575/
 
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+-Install Ingress Controller
+minikube addons enable ingress
+
+- Create Manifest Configmap
+
+Ingress-myservice.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-myservice
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: bagus.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: node-app-service
+                port:
+                  number: 3000
