@@ -1,6 +1,64 @@
 # pingpong-app built in with node js
 
 ## How to start
-- yarn install
-- yarn run start
+- Create Dockerfile
 
+FROM node:12-alpine
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --production
+COPY . .
+CMD ["yarn", "run", "start"]
+
+- Build Docker Image 
+(docker built . -t node-app:v2)
+
+- Push ke Docker Hub 
+(docker push baguspermadi/node-app:v2)
+
+-Create Deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+  labels:
+    app: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app 
+    spec:
+      containers:
+      - name: node-app
+        image: baguspermadi/node-app:v2
+        ports:
+        - containerPort: 3000
+
+-kubectl create -f node-app-deployment.yaml
+
+Create Service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-service
+spec:
+  selector:
+    app: node-app 
+  type: NodePort
+  ports: 
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+
+-kubectl create -f node-app-service.yaml
+
+-Test Open in Browser
+
+![Alt text](https://ibb.co/WFk1Lnj "Optional title")
