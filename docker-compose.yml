@@ -1,0 +1,6 @@
+version: '2'
+services:
+  sample-app:
+    image: sample-node-app
+    ports:
+      - "3000:3000"
