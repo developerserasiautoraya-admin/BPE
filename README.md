@@ -61,4 +61,4 @@ spec:
 
 -Test Open in Browser
 
-![Alt text](https://ibb.co/WFk1Lnj "Optional title")
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
