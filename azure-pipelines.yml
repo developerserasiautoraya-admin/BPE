@@ -51,4 +51,8 @@ stages:
         imageName: tsa-bpe:$(Build.BuildId)-test
         tags: |
           $(tag)
-          
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
+        artifactName: WebApp
