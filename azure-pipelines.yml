@@ -52,11 +52,8 @@ stages:
         imageName: '$(imageName):$(Build.BuildId)'
         tags: |
           $(tag)
-  
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
+    - task: CopyFiles@2
       inputs:
-        Contents: '$(Build.Repository.LocalPath)'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
-         
+      targetFolder: '$(Build.ArtifactStagingDirectory)'    
+
   
