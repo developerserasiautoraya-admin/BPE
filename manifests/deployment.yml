@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: developerserasiautorayaadminbpe 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: developerserasiautorayaadminbpe
+  template:
+    metadata:
+      labels:
+        app: developerserasiautorayaadminbpe 
+    spec:
+      containers:
+        - name: developerserasiautorayaadminbpe 
+          image: imsdev.azurecr.io/developerserasiautorayaadminbpe
+          ports:
+          - containerPort: 80
