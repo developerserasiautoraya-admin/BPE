@@ -55,6 +55,7 @@ stages:
     - task: CopyFiles@2
       inputs:
         targetFolder: '$(Build.ArtifactStagingDirectory)'
+        Contents: '*.yaml'
 
     - task: PublishBuildArtifacts@1    
       displayName: 'Publish Artifact: drop'
