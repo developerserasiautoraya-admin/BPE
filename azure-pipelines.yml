@@ -15,6 +15,7 @@ variables:
   imageRepository: 'developerserasiautorayaadminbpe'
   containerRegistry: 'imsdev.azurecr.io'
   dockerfilePath: '**/Dockerfile'
+  imageName: 'tsa-bpe'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'imsdevd433-auth'
 
@@ -35,7 +36,7 @@ stages:
       displayName: Build 
       inputs:
         command: build
-        imageName: tsa-bpe:$(Build.BuildId)-test
+        imageName: '$(imageName):$(Build.BuildId)'
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
@@ -48,7 +49,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         repository: $(imageRepository)
         command: push
-        imageName: tsa-bpe:$(Build.BuildId)-test
+        imageName: '$(imageName):$(Build.BuildId)'
         tags: |
           $(tag)
 
