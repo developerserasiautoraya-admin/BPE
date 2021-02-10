@@ -56,8 +56,6 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact'
       inputs:
-        contents: '*.yaml'
-        targetFolder: $(Build.ArtifactStagingDirectory)
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: '$(Parameters.ArtifactName)'
         condition: succeededOrFailed() 
