@@ -53,16 +53,12 @@ stages:
         tags: |
           $(tag)
   
-    - task: PublishSymbols@2
-      displayName: 'Publish symbols path'
-      inputs:
-        SearchPattern: '*.yaml'
-        PublishSymbols: false
-        continueOnError: true
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact'
       inputs:
-        PathtoPublish: '$(build.artifactstagingdirectory)'
+        contents: '*.yaml'
+        targetFolder: $(Build.ArtifactStagingDirectory)
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: '$(Parameters.ArtifactName)'
         condition: succeededOrFailed() 
 
