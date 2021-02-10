@@ -35,6 +35,7 @@ stages:
       displayName: Build 
       inputs:
         command: build
+        imageName: tsa-bpe:$(Build.BuildId)-test
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
