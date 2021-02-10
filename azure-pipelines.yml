@@ -52,7 +52,10 @@ stages:
         tags: |
           $(tag)
 
-    - task: PublishPipelineArtifact@1
+
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: drop'
       inputs:
-        targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
-        artifactName: WebApp
+        PathtoPublish: '$(build.artifactstagingdirectory)'
+        condition: succeededOrFailed()
