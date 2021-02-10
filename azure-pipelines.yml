@@ -48,6 +48,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         repository: $(imageRepository)
         command: push
+        imageName: tsa-bpe:$(Build.BuildId)-test
         tags: |
           $(tag)
           
