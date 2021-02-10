@@ -52,18 +52,18 @@ stages:
         imageName: '$(imageName):$(Build.BuildId)'
         tags: |
           $(tag)
-    
-    - task: CopyFiles@2
+  
+    - task: PublishSymbols@2
+      displayName: 'Publish symbols path'
       inputs:
-        targetFolder: '$(build.artifactstagingdirectory)'    
-
-    - task: PublishBuildArtifacts@1    
-      displayName: 'Publish Artifact: drop'
+        SearchPattern: '*.yaml'
+        PublishSymbols: false
+        continueOnError: true
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
       inputs:
         PathtoPublish: '$(build.artifactstagingdirectory)'
-
-
-
- 
+        ArtifactName: '$(Parameters.ArtifactName)'
+        condition: succeededOrFailed() 
 
   
