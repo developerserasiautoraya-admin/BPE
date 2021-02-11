@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: imsdev.azurecr.io/tsa/bpe:latest
+        image: imsdev.azurecr.io/tsa/bpe:RELEASE_ARTIFACTS__DEVELOPERSERASIAUTORAYA_BUILDID
         ports:
         - containerPort: 3000
