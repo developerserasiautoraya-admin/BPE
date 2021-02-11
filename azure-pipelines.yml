@@ -35,7 +35,7 @@ stages:
       displayName: Build 
       inputs:
         command: build
-        repository: '$(imageName):$(Build.BuildId)'
+        repository: $(imageName.BuildId)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
@@ -45,7 +45,7 @@ stages:
       displayName: Push image
       inputs:
         containerRegistry: $(dockerRegistryServiceConnection)
-        repository: '$(imageName):$(Build.BuildId)'
+        repository: $(imageName.BuildId)
         command: push
         tags: |
           $(tag)
