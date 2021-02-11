@@ -1,6 +1,6 @@
 # pingpong-app built in with node js
 
-## How to start
+## How to start test
 - Create Dockerfile
 
 FROM node:12-alpine
