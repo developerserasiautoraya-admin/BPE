@@ -12,7 +12,7 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '9f01a843-c8da-46ea-bd90-310a1b856a36'
-  imageRepository: 'developerserasiautorayaadminbpe'
+  imageName : tsa/bpe
   containerRegistry: 'imsdev.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -35,7 +35,7 @@ stages:
       displayName: Build 
       inputs:
         command: build
-        repository: '$(imageRepository):$(Build.BuildId)'
+        repository: '$(imageName):$(Build.BuildId)'
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
@@ -45,7 +45,7 @@ stages:
       displayName: Push image
       inputs:
         containerRegistry: $(dockerRegistryServiceConnection)
-        repository: '$(imageRepository):$(Build.BuildId)'
+        repository: '$(imageName):$(Build.BuildId)'
         command: push
         tags: |
           $(tag)
