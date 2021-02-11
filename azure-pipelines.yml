@@ -12,9 +12,11 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '9f01a843-c8da-46ea-bd90-310a1b856a36'
-  imageName : tsa/bpe:$(Build.BuildId)
+  imageRepository: 'developerserasiautorayaadminbpe'
   containerRegistry: 'imsdev.azurecr.io'
   dockerfilePath: '**/Dockerfile'
+  imageName: 'tsa-bpe'
+  tag: '$(Build.BuildId)'
   imagePullSecret: 'imsdevd433-auth'
 
   # Agent VM image name
@@ -34,18 +36,20 @@ stages:
       displayName: Build 
       inputs:
         command: build
-        imageName: $(imageName)
+        repository: $(imageName)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
-        
+        tags: |
+          $(tag)
 
     - task: Docker@2
       displayName: Push image
       inputs:
         containerRegistry: $(dockerRegistryServiceConnection)
-        imageName: $(imageName)
+        repository: $(imageName)
         command: push
-       
+        tags: |
+          $(tag)
     - task: CopyFiles@2
       inputs:
         targetFolder: '$(Build.ArtifactStagingDirectory)'
