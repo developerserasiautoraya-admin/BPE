@@ -19,3 +19,5 @@ spec:
         image: imsdev.azurecr.io/tsa-bpe:$tag
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+      - name: regcred
