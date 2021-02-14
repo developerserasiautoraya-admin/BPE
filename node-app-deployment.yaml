@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: imsdev.azurecr.io/tsa-bpe:$tag
+        image: imsdev.azurecr.io/tsa-bpe:3999
         ports:
         - containerPort: 3000
       imagePullSecrets:
