@@ -50,6 +50,16 @@ stages:
         command: push
         tags: |
           $(tag)
+          
+     - task: Docker@3
+      displayName: Push image
+      inputs:
+        containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageName)
+        command: push
+        tags: |
+          latest
+          
     - task: CopyFiles@2
       inputs:
         targetFolder: '$(Build.ArtifactStagingDirectory)'
