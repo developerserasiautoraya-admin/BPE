@@ -17,6 +17,7 @@ variables:
   dockerfilePath: '**/Dockerfile'
   imageName: 'tsa-bpe'
   tag: '$(Build.BuildId)'
+  tagName : 'latest'
   imagePullSecret: 'imsdevd433-auth'
 
   # Agent VM image name
@@ -57,7 +58,8 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         repository: $(imageName)
         command: push
-        
+        tags: |
+          $(tagName)
           
     - task: CopyFiles@2
       inputs:
