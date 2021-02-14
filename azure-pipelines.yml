@@ -57,8 +57,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         repository: $(imageName)
         command: push
-        tags: |
-          latest
+        
           
     - task: CopyFiles@2
       inputs:
