@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: imsdev.azurecr.io/tsa-bpe:#{Build.BuildNumber}#
+        image: imsdev.azurecr.io/tsa-bpe:latest
         ports:
         - containerPort: 3000
       imagePullSecrets:
